@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="C:\Users\OWBER\Pictures\arizlotto.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
+      }
+      input[type="number"]{
+        width: 60%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+      }
+      button{
+        width: 20%;
+        background-color: #4caf50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      div[id="input"],[id="output"]{
+        text-decoration: underline;
+        font-weight: bold;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+      }
+      #results {
+        margin: 20px 0;
+        padding: 20px;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+      }
+      #message{
+        background-color: #ccc;
+        color: black;
+        font-family: cursive;
+      }
+    </style>
+    <title>ArizLotto</title>
+</head>
+<body>
+  <div class="div">
+  <input type="number" placeholder="Choose a number from 0 - 5" min="0" max="5" required id="insert">
+        <button onclick="result()">Place bet</button>
+      </div>
+    <center>
+      <div id="input"></div>
+      <div id="output"></div>
+      <div id="message"></div>
+    </center>
+    <script>
+      function result(){
+        generatedAnswer = Math.floor(Math.random()*6)
+        chosen = document.getElementById("insert").value
+        
+        if (chosen > 5 || chosen < 0 || chosen === "e" ) {
+          document.getElementById("message").innerHTML = "Value must be between 0 and 5"
+          document.getElementById("message").style.color = "red"
+        document.getElementById("input").innerHTML = "";
+        document.getElementById("output").innerHTML = "";
+        } else {
+        document.getElementById("input").innerHTML = "You chose " + chosen;
+        document.getElementById("output").innerHTML = "The System generated " + generatedAnswer;
+        
+          if (chosen == generatedAnswer) {
+            document.getElementById("message").innerHTML = "Congratulations, you won the lottery"
+            document.getElementById("message").style.color = "green"
+          } else {
+            document.getElementById("message").innerHTML = "Sorry, you lost"
+            document.getElementById("message").style.color = "rgb(209, 79, 79)"
+          }
+        } 
+      }
+    </script>
+</body>
+</html>
